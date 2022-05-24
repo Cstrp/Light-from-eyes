@@ -1,7 +1,7 @@
 {
-  "name": "my-webpack-project",
+  "name": "light-from-eyes",
   "version": "1.0.0",
-  "description": "My webpack project",
+  "description": "light-from-eyes",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --mode development",
