@@ -2,53 +2,81 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-const isProduction = process.env.NODE_ENV === 'production'
-const isDevelopment = !isProduction
+let mode = 'development'
 let target = 'web'
-let mode = isDevelopment
-if (process.env.NODE_ENV === isProduction) {
-  mode = isProduction
+if (process.env.NODE_ENV === 'production') {
+  mode = 'production'
   target = 'browserslist'
 }
 
-const stylesHandler = isProduction
-  ? MiniCssExtractPlugin.loader
-  : 'style-loader'
+const plugins = [
+  new HtmlWebpackPlugin({
+    template: './index.html',
+  }),
+  new MiniCssExtractPlugin({
+    filename: '[name].[contenthash].css',
+  }),
+]
 
-const config = {
+module.exports = {
   mode,
+  plugins,
   target,
   context: path.resolve(__dirname, 'src'),
-  devtool: 'source-map',
-  entry: './script/index.ts',
+  entry: {
+    main: './main.js',
+    index: './index.ts',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name][contenthash].js',
     assetModuleFilename: 'assets/[hash][ext][query]',
     clean: true,
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      name: (entrypoint) => `runtimechunk~${entrypoint.name}`,
+    },
+  },
   devServer: {
     static: {
-      directory: path.join(__dirname, 'src'),
+      directory: path.join(__dirname, 'dist'),
     },
-    open: true,
+    allowedHosts: 'auto',
     compress: true,
-    host: 'localhost',
+    open: true,
+    hot: false,
     port: 1337,
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './index.html',
-    }),
-  ],
+  resolve: {
+    extensions: ['.js', '.ts', '.jsx', '.tsx'],
+  },
   module: {
     rules: [
       {
-        test: /\.html$/i,
-        loader: 'html-loader',
+        test: /\.(html)$/,
+        use: ['html-loader'],
       },
       {
-        test: /\.(ts|tsx)?$/,
+        test: /\.(s[ac]|c)ss$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg|webp|ico)$/i,
+        type: mode === 'production' ? 'asset' : 'asset/resource',
+        generator: {
+          filename: 'assets/img/[name][ext]',
+        },
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/font/[name].[ext]',
+        },
+      },
+      {
+        test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -58,33 +86,12 @@ const config = {
         },
       },
       {
-        test: /\.css$/i,
-        use: [stylesHandler, 'css-loader'],
-      },
-      {
-        test: /\.s[ac]ss$/i,
-        use: [stylesHandler, 'css-loader', 'sass-loader'],
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg|webp|ico)$/i,
-        type: isDevelopment === isProduction ? 'asset' : 'asset/resource',
-      },
-      {
-        test: /\.(woff2?|eot|ttf|otf)$/i,
-        type: 'asset/resource',
+        test: /\.(ts|tsx)?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'ts-loader',
+        },
       },
     ],
   },
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
-  },
-}
-
-module.exports = () => {
-  if (isProduction) {
-    config.mode = 'production'
-    config.plugins.push(new MiniCssExtractPlugin())
-    config.mode = 'development'
-  }
-  return config
 }
