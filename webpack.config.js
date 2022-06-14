@@ -9,6 +9,10 @@ if (process.env.NODE_ENV === 'production') {
   target = 'browserslist'
 }
 
+const randomPort = () => {
+  return Math.floor(Math.random() * 9999) + 100
+}
+
 const plugins = [
   new HtmlWebpackPlugin({
     template: './index.html',
@@ -46,7 +50,7 @@ module.exports = {
     compress: true,
     open: true,
     hot: false,
-    port: 1337,
+    port: randomPort(),
   },
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx'],
