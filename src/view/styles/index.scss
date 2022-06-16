@@ -1,13 +1,116 @@
 @import '~normalize.css';
 @import 'reset.scss';
 @import 'root.scss';
+@import 'burgeer';
 
 
-//.site-header { Example !!!!
-//  padding: 2rem;
-//  font-size: 1.8rem;
-//  @include mq('tablet-wide') {
-//    padding-top: 4rem;
-//    font-size: 2.4rem;
-//  }
-//}
+.body {
+  font-family: 'Gilroy', serif;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: normal;
+  color: #515151;
+
+  .wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+}
+
+
+/* Header start */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  -webkit-transition: 0.2s linear;
+  -o-transition: 0.2s linear;
+  transition: 0.2s linear;
+  padding-bottom: 20px;
+  z-index: 10;
+
+  &:active {
+    background: rgba(246, 246, 246, 0.75);
+  }
+
+  .header__wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: nowrap;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 56px;
+  }
+}
+
+.header__nav {
+  @media screen and (max-width: $mobile) {
+    display: none;
+  }
+
+  .header__nav-list {
+    display: flex;
+    gap: 65px;
+    flex-wrap: nowrap;
+
+    .header__nav_list-item {
+      font-family: "Gilroy", serif;
+      font-size: 22px;
+      line-height: 22px;
+      letter-spacing: 0.05em;
+      color: #343434;
+
+      &:hover, :focus, :active {
+        opacity: 0.75;
+      }
+
+      @media screen and(max-width: $tablet) {
+        font-size: 14px;
+        line-height: 14px;
+      }
+
+    }
+  }
+}
+
+.header__contact {
+  @media screen and (max-width: $mobile) {
+    margin: 0 auto;
+  }
+
+  .header__contact-phone {
+    float: left;
+    padding: 0 6px 0 0;
+  }
+
+  .header__contact-link {
+    font-family: "Gilroy", serif;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 0.05em;
+    color: #343434;
+
+    &:hover, :focus, :active {
+      opacity: 0.75;
+    }
+
+    @media screen and(max-width: $tablet) {
+      font-size: 14px;
+      line-height: 14px;
+    }
+  }
+}
+
+
+/* Header end */
+
