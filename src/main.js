@@ -12,3 +12,10 @@ function headerActive() {
 }
 
 headerActive()
+
+const burgerMenu = document.querySelector('.header__nav-mobile')
+const burgerBtn = document.querySelector('.header__nav_mobile-menu')
+burgerBtn.addEventListener('click', (evt) => {
+  burgerBtn.classList.toggle('active')
+  burgerMenu.classList.toggle('active')
+})

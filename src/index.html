@@ -8,7 +8,6 @@
   <title>Светач</title>
 </head>
 <body class="body">
-
 <header class="header">
   <div class="wrapper">
     <div class="header__wrapper">
@@ -17,7 +16,6 @@
           <img src="./data/assets/img/icon/logo.png" alt="Светач" class="header__logo-img">
         </a>
       </div>
-
       <nav class="header__nav">
         <ul class="header__nav-list">
           <li class="header__nav_list-item"><a href="" class="header__nav_list-link">О нас</a></li>
@@ -26,52 +24,88 @@
           <li class="header__nav_list-item"><a href="" class="header__nav_list-link">Контакты</a></li>
         </ul>
       </nav>
-
       <div class="header__contact">
         <a href="/" class="header__contact-link">
           <img src="./data/assets/img/svg/phone.svg" class="header__contact-phone" alt="phone">+ 375 29 123 45 67</a>
       </div>
-
-
+      <nav class="header__nav-mobile">
+        <ul class="header__nav_mobile-list">
+          <li class="header__nav_mobile-item"><a href="/" class="header__nav_mobile-link">О нас</a></li>
+          <li class="header__nav_mobile-item"><a href="/" class="header__nav_mobile-link">Наши приемущества</a></li>
+          <li class="header__nav_mobile-item"><a href="/" class="header__nav_mobile-link">Мы в Instagram</a></li>
+          <li class="header__nav_mobile-item"><a href="/" class="header__nav_mobile-link">Контакты</a></li>
+        </ul>
+      </nav>
+      <div class="header__nav_mobile-menu">
+        <div class="header__nav_mobile-line"></div>
+        <div class="header__nav_mobile-line"></div>
+        <div class="header__nav_mobile-line"></div>
+      </div>
     </div>
   </div>
 </header>
-
 <main class="main">
   <section class="intro">
     <div class="wrapper">
-
+      <div class="intro__wrapper">
+        <div class="intro__left-block">
+          <h1 class="intro__title">Учебники и книги для школьников</h1>
+          <p class="intro__subtitle">Здесь должен быть пояснительный текст.
+            Можно про издательство, можно написать
+            цену “от”.. </p>
+          <div class="intro__btn">
+            <button class="btn" id="btn">
+              Присоеденится
+              <img src="./data/assets/img/icon/book.png" alt="" class="btn__img">
+              <span class="bubbles">
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+              </span>
+            </button>
+          </div>
+          <div class="div">1....2....3</div>
+        </div>
+        <div class="intro__right-block">
+          <img src="./data/assets/img/kid.png" alt="lol" class="intro_img">
+          <img src="./data/assets/img/overlay.png" alt="lol" class="intro_img-overlay">
+        </div>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gooey">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
+            <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                           result="highContrastGraphic"/>
+            <feComposite in="SourceGraphic" in2="highContrastGraphic" operator="atop"/>
+          </filter>
+        </defs>
+      </svg>
     </div>
+
   </section>
   <section class="benefits">
-    <div class="wrapper">
-
-    </div>
+    <div class="wrapper"></div>
   </section>
   <section class="about__store">
-    <div class="wrapper">
-
-    </div>
+    <div class="wrapper"></div>
   </section>
   <section class="instagram">
-    <div class="wrapper">
-
-    </div>
+    <div class="wrapper"></div>
   </section>
   <section class="partners">
-    <div class="wrapper">
-
-    </div>
+    <div class="wrapper"></div>
   </section>
 </main>
-
 <footer class="footer">
-  <div class="wrapper">
-
-  </div>
+  <div class="wrapper"></div>
 </footer>
-
 </body>
-
 </html>
-

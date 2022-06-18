@@ -1,7 +1,9 @@
 @import '~normalize.css';
 @import 'reset.scss';
 @import 'root.scss';
-@import 'burgeer';
+@import './layout/burgeer';
+@import './layout/btn';
+@import 'header';
 
 
 .body {
@@ -20,97 +22,125 @@
 }
 
 
-/* Header start */
-
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  -webkit-transition: 0.2s linear;
-  -o-transition: 0.2s linear;
-  transition: 0.2s linear;
-  padding-bottom: 20px;
-  z-index: 10;
-
-  &:active {
-    background: rgba(246, 246, 246, 0.75);
+/* Intro start */
+.intro__wrapper {
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 56px;
+  @media screen and (max-width: $tablet) {
+    align-items: flex-start;
   }
-
-  .header__wrapper {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: nowrap;
-    -webkit-box-align: end;
-    -ms-flex-align: end;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 56px;
+  @media screen and (max-width: $mobile) {
+    flex-direction: column;
+    justify-content: center;
   }
 }
 
-.header__nav {
+
+.intro__left-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 60px;
+  max-width: 448px;
   @media screen and (max-width: $mobile) {
-    display: none;
+    gap: 40px;
   }
 
-  .header__nav-list {
-    display: flex;
-    gap: 65px;
-    flex-wrap: nowrap;
-
-    .header__nav_list-item {
-      font-family: "Gilroy", serif;
-      font-size: 22px;
-      line-height: 22px;
-      letter-spacing: 0.05em;
-      color: #343434;
-
-      &:hover, :focus, :active {
-        opacity: 0.75;
-      }
-
-      @media screen and(max-width: $tablet) {
-        font-size: 14px;
-        line-height: 14px;
-      }
-
-    }
-  }
-}
-
-.header__contact {
-  @media screen and (max-width: $mobile) {
-    margin: 0 auto;
-  }
-
-  .header__contact-phone {
-    float: left;
-    padding: 0 6px 0 0;
-  }
-
-  .header__contact-link {
+  .intro__title {
     font-family: "Gilroy", serif;
-    font-size: 22px;
-    line-height: 22px;
-    letter-spacing: 0.05em;
-    color: #343434;
-
-    &:hover, :focus, :active {
-      opacity: 0.75;
+    font-weight: 400;
+    font-size: 55px;
+    line-height: 55px;
+    color: #26497E;
+    @media screen and (max-width: $tablet) {
+      font-size: 36px;
+      line-height: 36px;
     }
+    @media screen and (max-width: $mobile) {
+      font-size: 24px;
+      line-height: 24px;
+    }
+  }
 
-    @media screen and(max-width: $tablet) {
+  .intro__subtitle {
+    font-family: "Gilroy", serif;
+    max-width: 420px;
+    font-size: 20px;
+    text-align: justify;
+    line-height: 20px;
+    color: #6C6C6C;
+    @media screen and (max-width: $tablet) {
+      font-size: 18px;
+      line-height: 18px;
+    }
+    @media screen and (max-width: $mobile) {
+      width: 255px;
       font-size: 14px;
       line-height: 14px;
     }
   }
+
+  .btn {
+    position: relative;
+    @include btn;
+
+    &:active {
+      transform: scale(0.99);
+    }
+
+    .btn__img {
+      position: absolute;
+      right: -25px;
+    }
+  }
 }
 
+.intro__right-block {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  width: 768px;
+  min-height: 535px;
+  align-items: center;
+  @media screen and (max-width: $tablet) {
+    width: 400px;
+  }
+  @media screen and (max-width: $mobile) {
+    width: 246px;
+  }
 
-/* Header end */
+  .intro_img-overlay {
+    -webkit-mask-image: url('../../data/assets/img/overlay.png');
+    mask-image: url('../../data/assets/img/overlay.png');
+    -webkit-mask-size: 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    z-index: -1;
+  }
+
+  .intro_img {
+    -webkit-mask-image: url('../../data/assets/img/overlay.png');
+    mask-image: url('../../data/assets/img/overlay.png');
+    -webkit-mask-size: 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+  }
+}
+
+/* Intro end */
+
 
