@@ -4,6 +4,7 @@
 @import './layout/burgeer';
 @import './layout/btn';
 @import 'header';
+@import 'layout/slider';
 
 
 .body {
@@ -23,23 +24,45 @@
 
 
 /* Intro start */
-.intro__wrapper {
+
+.full__wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 15px;
   display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: nowrap;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  padding-top: 56px;
-  @media screen and (max-width: $tablet) {
-    align-items: flex-start;
-  }
-  @media screen and (max-width: $mobile) {
-    flex-direction: column;
-    justify-content: center;
+  flex-wrap: wrap;
+
+  .intro__wrapper {
+    width: 100%;
+    -ms-flex-wrap: wrap;
+    flex-wrap: nowrap;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 95px;
+    display: flex;
+    animation-name: fade;
+    animation-duration: .5s;
+    animation-timing-function: linear;
+
+
+    &.active {
+      display: none;
+    }
+
+    @media screen and (max-width: $tablet) {
+      align-items: flex-start;
+    }
+
+    @media screen and (max-width: $mobile) {
+      flex-direction: column;
+      justify-content: center;
+    }
   }
 }
 
@@ -49,7 +72,8 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 60px;
-  max-width: 448px;
+  max-width: 710px;
+
   @media screen and (max-width: $mobile) {
     gap: 40px;
   }
@@ -60,10 +84,12 @@
     font-size: 55px;
     line-height: 55px;
     color: #26497E;
+
     @media screen and (max-width: $tablet) {
       font-size: 36px;
       line-height: 36px;
     }
+
     @media screen and (max-width: $mobile) {
       font-size: 24px;
       line-height: 24px;
@@ -77,10 +103,12 @@
     text-align: justify;
     line-height: 20px;
     color: #6C6C6C;
+
     @media screen and (max-width: $tablet) {
       font-size: 18px;
       line-height: 18px;
     }
+
     @media screen and (max-width: $mobile) {
       width: 255px;
       font-size: 14px;
@@ -90,10 +118,13 @@
 
   .btn {
     position: relative;
+    border: none;
+    filter: url("#filter");
     @include btn;
 
     &:active {
       transform: scale(0.99);
+      outline: none;
     }
 
     .btn__img {
@@ -110,9 +141,11 @@
   width: 768px;
   min-height: 535px;
   align-items: center;
+
   @media screen and (max-width: $tablet) {
     width: 400px;
   }
+
   @media screen and (max-width: $mobile) {
     width: 246px;
   }
@@ -141,6 +174,32 @@
   }
 }
 
+//@keyframes fade {
+//  from {opacity: .4}
+//  to {opacity: 1}
+//}
+
+@keyframes fade {
+  0% {
+    margin-left: 0;
+    opacity: 1;
+  }
+
+  25% {
+    margin-left: -200px;
+    opacity: 0;
+  }
+
+  50% {
+    margin-left: 200px;
+    opacity: 0;
+  }
+
+  100% {
+    margin-left: 0;
+    opacity: 1;
+  }
+}
+
+
 /* Intro end */
-
-

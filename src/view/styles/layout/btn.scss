@@ -6,14 +6,6 @@ svg {
   left: 12345px;
 }
 
-#btn {
-  border: none;
-  filter: url('#gooey');
-
-  & {
-    outline: none;
-  }
-}
 
 .bubbles {
   position: absolute;
@@ -48,7 +40,6 @@ svg {
       }
     }
   }
-
 
   @for $bubble from 1 through 10 {
     @keyframes move-#{$bubble} {
